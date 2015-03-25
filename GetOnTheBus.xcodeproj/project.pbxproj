@@ -18,6 +18,7 @@
 		6D37147C1AC1E63F009F555C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D37147B1AC1E63F009F555C /* CoreLocation.framework */; };
 		6D3714851AC20196009F555C /* PointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3714841AC20196009F555C /* PointAnnotation.m */; };
 		6DF924FE1AC24CE80073C4F3 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF924FD1AC24CE80073C4F3 /* DetailViewController.m */; };
+		6DF925031AC272D00073C4F3 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF925021AC272D00073C4F3 /* WebViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,8 @@
 		6D3714841AC20196009F555C /* PointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointAnnotation.m; sourceTree = "<group>"; };
 		6DF924FC1AC24CE80073C4F3 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		6DF924FD1AC24CE80073C4F3 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		6DF925011AC272D00073C4F3 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		6DF925021AC272D00073C4F3 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +151,8 @@
 				6D37145A1AC1E561009F555C /* ViewController.m */,
 				6DF924FC1AC24CE80073C4F3 /* DetailViewController.h */,
 				6DF924FD1AC24CE80073C4F3 /* DetailViewController.m */,
+				6DF925011AC272D00073C4F3 /* WebViewController.h */,
+				6DF925021AC272D00073C4F3 /* WebViewController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -262,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D37145B1AC1E561009F555C /* ViewController.m in Sources */,
+				6DF925031AC272D00073C4F3 /* WebViewController.m in Sources */,
 				6D3714851AC20196009F555C /* PointAnnotation.m in Sources */,
 				6D3714581AC1E561009F555C /* AppDelegate.m in Sources */,
 				6D3714551AC1E561009F555C /* main.m in Sources */,

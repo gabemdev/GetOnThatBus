@@ -37,6 +37,11 @@
     [self.mapView showAnnotations:self.mapView.annotations animated:YES];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0.49 green:0.35 blue:0.79 alpha:1.00]];
+}
+
 #pragma mark - Segment Control
 /**
  *  Switch indexes from segments. 
@@ -70,7 +75,7 @@
      *  Set initial annotatinos to stop name and routes.
      */
     newAnnotation.title = newAnnotation.stopName;
-    newAnnotation.subtitle = newAnnotation.routes;
+    newAnnotation.subtitle = [NSString stringWithFormat:@"Routes: %@",newAnnotation.routes];
 
     /**
      *  If intermodal matches "Metra", change the pin image to purple

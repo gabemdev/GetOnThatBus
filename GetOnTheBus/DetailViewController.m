@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import "WebViewController.h"
 
 @interface DetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
@@ -37,7 +38,7 @@
 
 #pragma mark - Helper Methods
 - (void)loadLabels {
-    self.addressLabel.text = self.annotation.address;
+    [self setReadableAddress];
     self.routesLabel.text = self.annotation.routes;
     self.stopIDLabel.text = self.annotation.stopID;
     self.directionLabel.text = self.annotation.direction;
@@ -47,25 +48,12 @@
         self.stopImageView.image = [UIImage imageNamed:@"ring-red"];
         [self.stopImageView sizeToFit];
         self.stopIDLabel.textColor = [UIColor colorWithRed:0.83 green:0.27 blue:0.27 alpha:1.00];
-        self.intermodal.textColor = self.stopIDLabel.textColor;
-        self.direction.textColor = self.stopIDLabel.textColor;
-        self.routes.textColor = self.stopIDLabel.textColor;
-        self.address.textColor = self.stopIDLabel.textColor;
-
-        [self.addressButton setBackgroundColor:self.stopIDLabel.textColor];
         [self.addressButton setTitle:self.annotation.intermodal forState:UIControlStateNormal];
     }
     else if ([self.annotation.intermodal isEqualToString:@"Pace"]) {
         self.stopImageView.image = [UIImage imageNamed:@"ring-purple"];
         [self.stopImageView sizeToFit];
         self.stopIDLabel.textColor = [UIColor colorWithRed:0.49 green:0.35 blue:0.79 alpha:1.00];
-        [self.addressButton setBackgroundColor:self.stopIDLabel.textColor];
-        self.intermodal.textColor = self.stopIDLabel.textColor;
-        self.direction.textColor = self.stopIDLabel.textColor;
-        self.routes.textColor = self.stopIDLabel.textColor;
-        self.address.textColor = self.stopIDLabel.textColor;
-
-        [self.addressButton setBackgroundColor:self.stopIDLabel.textColor];
         [self.addressButton setTitle:self.annotation.intermodal forState:UIControlStateNormal];
 
     }
@@ -74,14 +62,35 @@
         [self.stopImageView sizeToFit];
         self.stopIDLabel.textColor = [UIColor colorWithRed:0.50 green:0.50 blue:0.50 alpha:1.00];
         self.intermodal.hidden = YES;
-        self.direction.textColor = self.stopIDLabel.textColor;
-        self.routes.textColor = self.stopIDLabel.textColor;
-        self.address.textColor = self.stopIDLabel.textColor;
-        [self.addressButton setBackgroundColor:self.stopIDLabel.textColor];
         [self.addressButton setTitle:@"WebView" forState:UIControlStateNormal];
     }
 
+    self.intermodal.textColor = self.stopIDLabel.textColor;
+    self.direction.textColor = self.stopIDLabel.textColor;
+    self.routes.textColor = self.stopIDLabel.textColor;
+    self.address.textColor = self.stopIDLabel.textColor;
+    [self.navigationController.navigationBar setBarTintColor:self.stopIDLabel.textColor];
+    [self.addressButton setBackgroundColor:self.stopIDLabel.textColor];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    WebViewController *vc = segue.destinationViewController;
+    vc.annotation = self.annotation;
+
+}
+
+- (void)setReadableAddress {
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:self.annotation.coordinate.latitude longitude:self.annotation.coordinate.longitude];
+    CLGeocoder *geoCoder = [CLGeocoder new];
+    [geoCoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        CLPlacemark *placemark = placemarks.firstObject;
+        NSString *address = [NSString stringWithFormat:@"%@ %@ %@ %@",
+                             placemark.thoroughfare,
+                             placemark.locality,
+                             placemark.administrativeArea,
+                             placemark.postalCode];
+        self.addressLabel.text = address;
+    }];
+}
 
 @end

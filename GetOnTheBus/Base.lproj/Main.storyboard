@@ -182,6 +182,9 @@
                                 <state key="normal" title="URL">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="ElH-WJ-SLe" kind="show" identifier="showWeb" id="KPp-XL-pKn"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76h-S0-aAc">
                                 <rect key="frame" x="16" y="162" width="568" height="33"/>
@@ -279,6 +282,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bjl-cc-Hqm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1763" y="1006"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="4Wx-Kp-jEJ">
+            <objects>
+                <viewController id="ElH-WJ-SLe" customClass="WebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WMO-u1-O2a"/>
+                        <viewControllerLayoutGuide type="bottom" id="lQi-u5-5bw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Xcc-bi-RZm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="shE-yg-21p">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ElH-WJ-SLe" id="OSF-km-a2Y"/>
+                                </connections>
+                            </webView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="amh-EM-zkP">
+                                <rect key="frame" x="282" y="249" width="37" height="37"/>
+                                <color key="color" red="0.57254901960000004" green="0.45098039220000002" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lQi-u5-5bw" firstAttribute="top" secondItem="shE-yg-21p" secondAttribute="bottom" id="7me-Vj-PD2"/>
+                            <constraint firstAttribute="centerX" secondItem="amh-EM-zkP" secondAttribute="centerX" id="UpM-ZF-POB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="shE-yg-21p" secondAttribute="trailing" constant="-16" id="d1m-bc-y8b"/>
+                            <constraint firstItem="shE-yg-21p" firstAttribute="top" secondItem="WMO-u1-O2a" secondAttribute="bottom" id="im3-SN-QBA"/>
+                            <constraint firstAttribute="centerY" secondItem="amh-EM-zkP" secondAttribute="centerY" id="qPz-PJ-wm3"/>
+                            <constraint firstItem="shE-yg-21p" firstAttribute="leading" secondItem="Xcc-bi-RZm" secondAttribute="leadingMargin" constant="-16" id="tIM-vn-guA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="amh-EM-zkP" id="uxQ-g6-0Up"/>
+                        <outlet property="webView" destination="shE-yg-21p" id="73U-Fa-XMF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4z4-c8-5CR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2480" y="1006"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eQt-qG-rVE">
