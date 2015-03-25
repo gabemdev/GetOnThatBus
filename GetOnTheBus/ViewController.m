@@ -24,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"Map";
     //Get data from model
     self.mapPins = [PointAnnotation stopsArray];
 
